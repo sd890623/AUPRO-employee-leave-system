@@ -1,0 +1,31 @@
+<h1>Listing leaves</h1>
+<div id="leaves">
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Leave type</th>
+      <th>Leave start</th>
+      <th>Leave to</th>
+      <th>Notes</th>
+      <th>Approval</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% leaves.each do |leafe| %>
+      <tr>
+        <td><%= leafe.user.name %></td>
+        <td><%= leafe.leave_type.name %></td>
+        <td><%= leafe.leave_start %></td>
+        <td><%= leafe.leave_to %></td>
+        <td><%= leafe.notes %></td>
+        <td><%= leafe.approval %></td>
+        <td><%= link_to 'Edit', edit_leafe_path(leafe) %></td>
+        <td><%= link_to 'Destroy', leafe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,10 @@
+<h1>New Leave Types</h1>
+<%= form_for (@leave_type) do |l| %>
+	<%= l.label :name %>
+	<%= l.text_field :name %>
+	<%= l.label :total %>
+	<%= l.number_field :total %>
+	<div class="actions">
+    <%= l.submit %>
+  	</div>
+ <% end %>

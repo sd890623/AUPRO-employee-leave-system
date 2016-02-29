@@ -1,0 +1,1 @@
+$("#leaves").update("<%= escape_javascript( render partial: "leaves", locals: {user:@user, leave:Leave.new, leave_types: LeaveType.all } ) %>");

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AUPRO Employee System</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+
+<div id="header">
+	<div class="container">
+	<div id="title row"><h1>AUPRO Employee System</h1></div>
+	<div id="right">
+		<div class="row">
+		<a href="/users" role="button" class="btn btn-default">All Users</a>
+		<a href="/leaves" role="button" class="btn btn-default">All leaves</a>
+		<a href="/departments" role="button" class="btn btn-default">All departments</a>
+		</div>
+		<div class="row margin">
+			<%= form_tag "/users/find" do %>
+			<%= label_tag "Search leave record by Employee name" %>
+			<%= text_field_tag "search_string", nil, placeholder:"Enter your search here" %>
+			<%= submit_tag "Search" %>
+			<% end %>
+		</div>
+
+	</div>
+	</div>
+</div>
+<div id="wrapper">
+	<p>No records are found --</p>
+</div>	
+<div id="footer">
+
+</div>
+
+</body>
+</html>

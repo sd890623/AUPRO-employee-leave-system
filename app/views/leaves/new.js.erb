@@ -1,0 +1,3 @@
+$('#new-form').html("<%= escape_javascript (render 'form')  %>");
+$('#leaves').html("<%= j (render partial: 'leaves',locals: {leaves: @leaves}) %>");
+$('#new-form').slideDown(350);

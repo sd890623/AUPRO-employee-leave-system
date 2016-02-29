@@ -1,0 +1,44 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label 'Department' %><br>
+    <% if @departments.empty? %>
+      <p>No Department found, Please add a <%= link_to 'Department', new_department_path %> first</p>
+    <% else %>
+      <%= select_tag 'user[department_id]', options_for_select(@departments.collect{ |d| [d.name, d.id] }) %> 
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label 'Employment Start' %><br>
+    <%= f.date_field :start %>
+  </div>
+  <b>Is this employee still working</b><br>
+  <input type="checkbox" id="current_working"/>
+  <div class="employment_end" >
+
+    <%= f.label 'Employment End' %><br>
+    <%= f.date_field :end %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_field :notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

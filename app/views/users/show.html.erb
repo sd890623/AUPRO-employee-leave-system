@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+<h2>Employee Info</h2>
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @user.department.name %>
+</p>
+
+<p><strong>Working status</strong>
+<% 
+
+if (@user.end.strftime('%Y-%m-%d')=='1989-06-23') 
+	latter='and is still working.'
+else
+	latter="and employment ends in #{@user.end}"
+end
+%>
+<%= @user.name %> worked from <%= @user.start %> <%= latter  %>.
+
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @user.notes %>
+</p>
+<div id="leaves">
+<%= render partial: "leaves", locals: {user: @user} %>
+</div>
+<%= button_to "AJAX Refresh", "/users/#{@user.id}/leaves", remote: true ,method: :get %>
+
+<%= render partial: "new_leaves", locals: {user:@user, leave:Leave.new, leave_types: LeaveType.all } %>
+
+
+
+<br>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

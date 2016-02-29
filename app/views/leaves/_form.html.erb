@@ -1,0 +1,49 @@
+<%= form_for(@leave) do |f| %>
+  <% if @leave.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@leave.errors.count, "error") %> prohibited this leave from being saved:</h2>
+
+      <ul>
+      <% @leave.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %> 
+
+  <div class="field">
+    <%= f.label 'Employee' %><br>
+    <% if @users.empty? %>
+        <p>No user found, Please add a <%= link_to 'User', new_user_path %> first</p>
+    <% else %>
+        <%= select_tag 'leave[user_id]', options_for_select(@users.collect{ |u| [u.name, u.id] }) %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label 'Leave Type' %><br>
+    <% if @leave_types.empty? %>
+        <p>No Leave Type added, Please add one <%= link_to 'Leave Type', controller: "leave_types", action: "new" %> first</p>
+    <% else %>
+        <%= select_tag 'leave[leave_type_id]', options_for_select(@leave_types.collect{ |l| [l.name, l.id] }) %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :leave_start %><br>
+    <%= f.date_select :leave_start %>
+  </div>
+  <div class="field">
+    <%= f.label :leave_to %><br>
+    <%= f.date_select :leave_to %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_field :notes %>
+  </div>
+  <div class="field">
+    <%= f.label :approval %><br>
+    <%= f.check_box :approval %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

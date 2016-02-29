@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AUPRO Tools</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag params[:controller] %>
+  <%= stylesheet_link_tag 'vegas.min' %>
+
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag params[:controller] %>
+  <%= javascript_include_tag 'vegas.min' %>
+
+
+
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+
+<div id="header">
+	<div class="container">
+	<div id="title row"><h1>AUPRO Tools</h1></div>
+	<div id="right">
+		<div class="row">
+		<a href="/users" role="button" class="btn btn-default">All Users</a>
+		<a href="/leaves" role="button" class="btn btn-default">All leaves</a>
+		<a href="/departments" role="button" class="btn btn-default">All departments</a>
+		</div>
+		<div class="row margin">
+			<%= form_tag "/ads/find" do %>
+			<%= label_tag "Search by Item name" %>
+			<%= text_field_tag "search_string", nil, placeholder:"Enter your search here" %>
+			<%= submit_tag "Search" %>
+			<% end %>
+		</div>
+
+	</div>
+	</div>
+</div>
+<div id="wrapper">
+	<%= yield %>
+</div>	
+<div id="footer">
+
+</div>
+
+</body>
+</html>

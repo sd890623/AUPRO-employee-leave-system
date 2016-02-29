@@ -1,0 +1,33 @@
+<h2>Leaves of employee <%= user.name %></h2>
+<div id="leaves">
+<table>
+  <thead>
+    <tr>
+     
+      <th>Leave type</th>
+      <th>Leave start</th>
+      <th>Leave to</th>
+      <th>Notes</th>
+      <th>Approval</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+<% leaves=user.leaves %>
+  <tbody>
+    <% leaves.each do |leafe| %>
+      <tr>
+      
+        <td><%= leafe.leave_type.name %></td>
+        <td><%= leafe.leave_start %></td>
+        <td><%= leafe.leave_to %></td>
+        <td><%= leafe.notes %></td>
+        <td><%= leafe.approval %></td>
+        <td><%= link_to 'Edit', edit_leafe_path(leafe) %></td>
+        <td><%= link_to 'Destroy', leafe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+

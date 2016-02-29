@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  leave_type_id: 1
+  leave_start: 2016-01-28
+  leave_to: 2016-01-28
+  notes: MyString
+  approval: false
+
+two:
+  user_id: 1
+  leave_type_id: 1
+  leave_start: 2016-01-28
+  leave_to: 2016-01-28
+  notes: MyString
+  approval: false
